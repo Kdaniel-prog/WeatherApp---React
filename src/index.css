@@ -1,0 +1,13 @@
+html {
+    height: 100%;
+  }
+  
+body {
+    height: 100%;
+  }
+  
+div#root {
+    height: 100%; /* remove this line to see div.app is no more 100% height */
+    background-color: rgb(11, 19, 30);
+  }
+  

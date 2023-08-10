@@ -1,0 +1,20 @@
+.weather--country{
+    font-size: 13px;
+    padding-left: 40px;
+}
+.weather--condition{
+    font-size: 28px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.weather--wind{
+    font-size: 14px;
+    font-style: initial
+}
+.weather--group{
+    display: flex;
+}
+.weather--wind__title{
+    font-size: 16px;
+    padding-right: 5px;
+}
