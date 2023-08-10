@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import MainWeatherCardProps from './components/MainWeatherCard/MainWeatherCardProps';
-import WeatherData from './dataTypes/WeatherData'
+import WeatherData from './Data/getWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./components/MainPage/MainPage";
 import './App.css';
