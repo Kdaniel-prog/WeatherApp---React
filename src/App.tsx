@@ -9,7 +9,7 @@ import WeatherData from './Data/GetWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./components/MainPage/MainPage";
 import './App.css';
-import { SpecificTimeCollection, SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps';
+import { SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps';
 
 
 function App() {
