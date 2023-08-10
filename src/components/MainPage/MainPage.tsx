@@ -1,11 +1,12 @@
 import MainWeatherCard from "../MainWeatherCard/MainWeatherCard";
-import MainWeatherCardProps from '../MainWeatherCard/MainWeatherCardProps';
+import MainWeatherCardProps from './MainPageProps';
+import TodayForecast from "../TodayForecast/TodayForecast";
 
 const MainPage = (props: MainWeatherCardProps) => {
 
     return(
         <div>
-            <MainWeatherCard 
+            <MainWeatherCard
                 name={props.name}
                 code={props.code}
                 country={props.country}
@@ -15,6 +16,7 @@ const MainPage = (props: MainWeatherCardProps) => {
                 windDir={props.windDir}
                 windDegree={props.windDegree}
             />
+            <TodayForecast datas={props.times}/>
         </div>
     )
 }

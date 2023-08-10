@@ -25,7 +25,7 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
     };
 
     return (
-        <Card>
+        <div className='spacing'>
             <Container className="p-4" fluid="md">
                 <Row className="justify-content-md-center">
                     <Col xs={7}>
@@ -59,14 +59,15 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
                                 </Col>
                             </Row>
                         </Container>
-
                     </Col>
                     <Col>
-                        <WeatherImage width={200} code={props.code}/>
+                        <div className='weather--img'>
+                            <WeatherImage width={160} code={props.code}/>
+                        </div>
                     </Col>
                 </Row>
             </Container>
-        </Card>
+        </div>
     )
 };
 

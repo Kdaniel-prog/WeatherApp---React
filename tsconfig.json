@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/Data/getWeatherInformations"],
+  "include": ["src", "src/Data/GetWeatherInformations"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

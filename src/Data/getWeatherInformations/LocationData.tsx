@@ -1,4 +1,4 @@
-export interface LocationData {
+export default interface LocationData {
     name: string;
     region: string;
     country: string;

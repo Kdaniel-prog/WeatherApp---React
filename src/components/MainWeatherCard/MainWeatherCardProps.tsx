@@ -6,5 +6,5 @@ export default interface MainWeatherCardProps{
     temp: number,
     windKph: number,
     windDir: string,
-    windDegree: number,
+    windDegree: number
 }

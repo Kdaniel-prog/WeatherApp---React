@@ -1,3 +1,6 @@
+.weather--img{
+    float:right;
+}
 .weather--country{
     font-size: 13px;
     padding-left: 40px;
@@ -17,4 +20,8 @@
 .weather--wind__title{
     font-size: 16px;
     padding-right: 5px;
+}
+
+.spacing{
+    padding-bottom: 20px;
 }

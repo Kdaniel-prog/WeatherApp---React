@@ -1,0 +1,14 @@
+.containter{
+    display: flex;
+}
+
+.weather--title{
+    font-size: 26px;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 5%;
+}
+
+.card--items{
+    align-items: normal;
+}

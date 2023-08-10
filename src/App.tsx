@@ -4,11 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import MainWeatherCardProps from './components/MainWeatherCard/MainWeatherCardProps';
-import WeatherData from './Data/getWeatherInformations/WeatherData';
+import MainWeatherCardProps from './components/MainPage/MainPageProps';
+import WeatherData from './Data/GetWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./components/MainPage/MainPage";
 import './App.css';
+import { SpecificTimeCollection, SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps';
 
 
 function App() {
@@ -32,6 +33,29 @@ function App() {
         });
     }, []);
   
+  // Extract specific hours at indices 6, 9, 12, 15, 18, and 21
+  const specificHours = [6, 9, 12, 15, 18, 21]; 
+
+  const todayDates: SpecificTimeProps[] = specificHours.map(index => {
+    const hourForecast = weatherData?.forecast.forecastday[0].hour[index];
+    if (hourForecast) {
+      const specHour: SpecificTimeProps = {
+        time: new Date(hourForecast.time),
+        temp_c: hourForecast.temp_c,
+        code: hourForecast.condition.code
+      };
+      return specHour;
+    } else {
+      const specHour: SpecificTimeProps = {
+        time: new Date(),
+        temp_c: 0,
+        code: 0,
+      };
+      return specHour;
+  }});
+
+  console.log(JSON.parse(JSON.stringify(todayDates)));
+
   const mainWeatherData: MainWeatherCardProps  = {
     name: weatherData?.location.name ? weatherData?.location.name : '' ,
     code: weatherData?.current.condition.code ? weatherData?.current.condition.code : 1000,
@@ -41,8 +65,10 @@ function App() {
     windKph: weatherData?.current.wind_kph ? weatherData?.current.wind_kph : 0,
     windDir: weatherData?.current.wind_dir ? weatherData?.current.wind_dir : '',
     windDegree: weatherData?.current.wind_degree ? weatherData?.current.wind_degree : 0,
+    times: todayDates
   }
-  console.log(mainWeatherData);
+
+
   return (
     <div className="background">
       <Container className="p-4" fluid="md" gap={3}>
@@ -60,6 +86,7 @@ function App() {
               windKph={mainWeatherData.windKph}
               windDir={mainWeatherData.windDir}
               windDegree={mainWeatherData.windDegree}
+              times={mainWeatherData.times}
             />
           </Col>
         </Row>

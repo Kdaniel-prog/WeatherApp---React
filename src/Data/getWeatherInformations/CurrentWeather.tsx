@@ -1,6 +1,6 @@
-import { Condition } from "./Condition";
+import Condition from "./Condition";
 
-export interface CurrentWeather {
+export default interface CurrentWeather {
     last_updated_epoch: number;
     last_updated: string;
     temp_c: number;
@@ -24,4 +24,4 @@ export interface CurrentWeather {
     uv: number;
     gust_mph: number;
     gust_kph: number;
-  }
+}
