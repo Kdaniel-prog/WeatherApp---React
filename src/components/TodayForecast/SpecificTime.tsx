@@ -4,11 +4,11 @@ import Col from 'react-bootstrap/Col';
 import './SpecificTime.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-
+    const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
     return (
         <Col>
             <div>
-                <p className="weather--text">{props.time.toDateString()}</p>
+                <p className="weather--text">{timeString}</p>
             </div>
             
             <div className="image-container">
