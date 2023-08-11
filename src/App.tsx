@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
+import {Container, Col, Row } from 'react-bootstrap';
 import MainWeatherCardProps from './components/MainPage/MainPageProps';
 import WeatherData from './Data/GetWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
@@ -16,8 +13,8 @@ function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
-  const city = 'Budapest'
-  const tokenKey = '29823e80a5df4bda9ed92553230808';
+  const city = 'Miskolc'
+  const tokenKey = '89430708b4e941679bd95125231108';
   const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
 
   useEffect(() => {
