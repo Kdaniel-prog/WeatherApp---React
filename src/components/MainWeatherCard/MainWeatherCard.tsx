@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import Card from "../UI/Card/Card";
 
 import wind from "../../assets/wind.png";
 

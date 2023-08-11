@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import './SpecificTime.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-    const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+    const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
     return (
         <Col>
             <div>
