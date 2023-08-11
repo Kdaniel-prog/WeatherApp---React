@@ -7,7 +7,7 @@ const SearchBar = () =>{
         <Card className="card--align">
             <form>
                 <input type='text' placeholder='Search...'></input>
-                <button type="submit">Search</button>
+                <button type="submit" disabled>Search</button>
             </form>
         </Card>
     )
