@@ -20,7 +20,7 @@ const TodayForecast = (props: SpecificTimeCollection) => {
             </div>
             <Container>
                 <Row>
-                    {props.datas.map(item => { return <SpecificTime time={item.time} code={item.code} temp_c={item.temp_c}/>})}
+                    {props.datas.map((item, index) => { return <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c}/>})}
                 </Row>
             </Container>
         </Card>

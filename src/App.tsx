@@ -16,7 +16,7 @@ function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
-  const city = 'Szolnok'
+  const city = 'Budapest'
   const tokenKey = '29823e80a5df4bda9ed92553230808';
   const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
 
