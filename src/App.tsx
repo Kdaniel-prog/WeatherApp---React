@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import {Container, Col, Row } from 'react-bootstrap';
-import MainWeatherCardProps from './components/MainPage/MainPageProps';
+import MainPageProps from './components/MainPage/MainPageProps';
+import MainWeatherCardProps from './components/MainWeatherCard/MainWeatherCardProps';
 import WeatherData from './Data/GetWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./components/MainPage/MainPage";
@@ -13,7 +14,7 @@ function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
-  const city = 'Miskolc'
+  const city = 'Cegled'
   const tokenKey = '89430708b4e941679bd95125231108';
   const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
 
@@ -53,7 +54,7 @@ function App() {
 
   console.log(JSON.parse(JSON.stringify(todayDates)));
 
-  const mainWeatherData: MainWeatherCardProps  = {
+  const mainWeatherCardProps: MainWeatherCardProps = {
     name: weatherData?.location.name ? weatherData?.location.name : '' ,
     code: weatherData?.current.condition.code ? weatherData?.current.condition.code : 1000,
     country: weatherData?.location.country ? weatherData?.location.country : '',
@@ -62,7 +63,11 @@ function App() {
     windKph: weatherData?.current.wind_kph ? weatherData?.current.wind_kph : 0,
     windDir: weatherData?.current.wind_dir ? weatherData?.current.wind_dir : '',
     windDegree: weatherData?.current.wind_degree ? weatherData?.current.wind_degree : 0,
-    times: todayDates
+  }
+
+  const mainWeatherData: MainPageProps  = {
+    mainWeatherCardProps: mainWeatherCardProps,
+    todayForecast: todayDates
   }
 
 
@@ -75,15 +80,8 @@ function App() {
           </Col>
           <Col xs={10}>
             <MainPage 
-              name={mainWeatherData.name}
-              code={mainWeatherData.code}
-              country={mainWeatherData.country}
-              conditionText={mainWeatherData.conditionText}
-              temp={mainWeatherData.temp}
-              windKph={mainWeatherData.windKph}
-              windDir={mainWeatherData.windDir}
-              windDegree={mainWeatherData.windDegree}
-              times={mainWeatherData.times}
+              mainWeatherCardProps={mainWeatherData.mainWeatherCardProps}
+              todayForecast={mainWeatherData.todayForecast}
             />
           </Col>
         </Row>
