@@ -48,11 +48,11 @@ const SearchBar = (props) => {
         setSearchValue(resultValue);
         setShowResult(false);
         const newCity = cities.find(c=> {
-            console.log(c.name+' '+resultValue)
             if(c.name == resultValue){
                 return c;
             }
         });
+        
         if(newCity){
             setCities([{...newCity}]);
         }

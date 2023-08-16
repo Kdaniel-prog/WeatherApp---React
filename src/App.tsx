@@ -18,9 +18,9 @@ function App() {
   const [isEmpty, setIsEmpty] =useState(true);
 
   const tokenKey = '89430708b4e941679bd95125231108';
+  let apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
 
   const fetchData = () =>{
-    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
     setIsLoading(true);
     fetch(apiUrl)
       .then((response) => response.json())
@@ -87,8 +87,11 @@ function App() {
   }
 
   const handleResult = (result:string) =>{
-    setCity(result);
-    fetchData();
+    if(city !== result){
+      setCity(result);
+      apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${result}&days=1&aqi=no&alerts=no`;
+      fetchData();
+    }
   }
 
   return (

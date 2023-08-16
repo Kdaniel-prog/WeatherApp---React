@@ -9,6 +9,7 @@ const SearchResult = (props: SearchResultProps) => {
 
         const value = target.value;
         console.log(value);
+        console.log('asd')
         props.onResult(value);
     };
   
