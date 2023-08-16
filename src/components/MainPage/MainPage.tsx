@@ -1,13 +1,15 @@
 import MainWeatherCard from "../MainWeatherCard/MainWeatherCard";
 import TodayForecast from "../TodayForecast/TodayForecast";
-import SearchBar from "../SearchBar/searchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import MainPageProps from "./MainPageProps";
 
 const MainPage = (props: MainPageProps) => {
-
+    const handleResult = (result:string) =>{
+        props.onResult(result);
+    }
     return(
         <div>
-            <SearchBar />
+            <SearchBar onResult={handleResult} />
             <MainWeatherCard
                 name={props.mainWeatherCardProps.name}
                 code={props.mainWeatherCardProps.code}

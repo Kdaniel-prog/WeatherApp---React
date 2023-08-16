@@ -6,9 +6,9 @@ import weather0 from "../../assets/weather conditions/1003.png";
 import weather1 from "../../assets/weather conditions/1006.png";
 import weather2 from "../../assets/weather conditions/1030.png";
 import weather3 from "../../assets/weather conditions/1063, 1066, 1069.png";
-import weather4 from "../../assets/weather conditions/1087.png";
+import weather4 from "../../assets/weather conditions/1087, 1276, 1273.png";
 import weather5 from "../../assets/weather conditions/1114.png";
-import weather6 from "../../assets/weather conditions/1117, 1255, 1258, 1261, 1264, 1279, 1282, 1276, 1273.png";
+import weather6 from "../../assets/weather conditions/1117, 1255, 1258, 1261, 1264, 1279, 1282.png";
 import weather7 from "../../assets/weather conditions/1135, 1147.png";
 import weather8 from "../../assets/weather conditions/1150.png";
 import weather9 from "../../assets/weather conditions/1153.png";
@@ -25,9 +25,9 @@ const WeatherImage = (props: WeatherImageProps) =>{
         {path: weather1, codes: '1006'},
         {path: weather2, codes: '1030'},
         {path: weather3, codes: '1063, 1066, 1069'},
-        {path: weather4, codes: '1087'},
+        {path: weather4, codes: '1087, 1276, 1273'},
         {path: weather5, codes: '1114'},
-        {path: weather6, codes: '1117, 1255, 1258, 1261, 1264, 1279, 1282, 1276, 1273'},
+        {path: weather6, codes: '1117, 1255, 1258, 1261, 1264, 1279, 1282'},
         {path: weather7, codes: '1135, 1147'},
         {path: weather8, codes: '1150'},
         {path: weather9, codes: '1153'},

@@ -3,5 +3,7 @@ import MainWeatherCardProps from "../MainWeatherCard/MainWeatherCardProps";
 
 export default interface MainPageProps{
     mainWeatherCardProps: MainWeatherCardProps,
-    todayForecast: SpecificTimeProps[]
+    todayForecast: SpecificTimeProps[],
+    
+    onResult(value: string): void;
 }

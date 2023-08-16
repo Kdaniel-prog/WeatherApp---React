@@ -13,23 +13,39 @@ import { SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps'
 function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [city,setCity] = useState<string>('Budapest');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isEmpty, setIsEmpty] =useState(true);
 
-  const city = 'Cegled'
   const tokenKey = '89430708b4e941679bd95125231108';
-  const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
 
+  const fetchData = () =>{
+    const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
+    setIsLoading(true);
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((json)=>{
+          const results = json;
+          setWeatherData(results);
+
+          console.log(results)
+          if(weatherData === null){
+              setIsEmpty(false);
+          }else{
+              setIsEmpty(true);
+          }
+      })
+      .catch((error)=>{
+          console.log(error);
+    })
+    setIsLoading(false);
+  }
   useEffect(() => {
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-          // Assuming the API response structure matches the WeatherData interface
-          setWeatherData(data);
-          console.log(JSON.parse(JSON.stringify(weatherData)));
-        })
-        .catch(error => {
-          console.error('Error fetching weather data:', error);
-        });
-    }, []);
+    if(isEmpty && !isLoading){
+      fetchData();
+    }
+  }, []);
+  
   
   // Extract specific hours at indices 6, 9, 12, 15, 18, and 21
   const specificHours = [6, 9, 12, 15, 18, 21]; 
@@ -70,6 +86,10 @@ function App() {
     todayForecast: todayDates
   }
 
+  const handleResult = (result:string) =>{
+    setCity(result);
+    fetchData();
+  }
 
   return (
     <div className="background">
@@ -82,6 +102,7 @@ function App() {
             <MainPage 
               mainWeatherCardProps={mainWeatherData.mainWeatherCardProps}
               todayForecast={mainWeatherData.todayForecast}
+              onResult={handleResult}
             />
           </Col>
         </Row>
