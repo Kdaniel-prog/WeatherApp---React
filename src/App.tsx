@@ -13,12 +13,21 @@ import { SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps'
 function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [city,setCity] = useState<string>('Budapest');
+  const [city,setCity] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [isEmpty, setIsEmpty] =useState(true);
 
   const tokenKey = '89430708b4e941679bd95125231108';
   let apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${tokenKey}&q=${city}&days=1&aqi=no&alerts=no`;
+
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition((position) =>{
+      console.log(position);
+      const pos = `${position.coords.latitude}, ${position.coords.longitude}`;
+      setCity(pos);
+    })
+  }
+  
 
   const fetchData = () =>{
     setIsLoading(true);
