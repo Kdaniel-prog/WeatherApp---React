@@ -4,11 +4,10 @@ import "./SearchResult.css";
 
 const SearchResult = (props: SearchResultProps) => {
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const target = event.target as HTMLButtonElement; // Cast event.target to the appropriate type
-
-        const value = target.value;
-        console.log(value);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const target = event.target as HTMLOptionElement;
+        console.log(target);
+        const value = target.text;
         console.log('asd')
         props.onResult(value);
     };

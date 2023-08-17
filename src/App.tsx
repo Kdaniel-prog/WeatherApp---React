@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import {Container, Col, Row } from 'react-bootstrap';
-import MainPageProps from './components/MainPage/MainPageProps';
 import MainWeatherCardProps from './components/MainWeatherCard/MainWeatherCardProps';
 import WeatherData from './Data/GetWeatherInformations/WeatherData';
 import Navbar from "./components/Navbar/Navbar";
@@ -13,7 +12,7 @@ import { SpecificTimeProps } from './components/TodayForecast/SpecificTimeProps'
 function App() {
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [city,setCity] = useState<string>('');
+  const [city,setCity] = useState<string>('Budapest');
   const [isLoading, setIsLoading] = useState(false);
   const [isEmpty, setIsEmpty] =useState(true);
 
@@ -60,7 +59,7 @@ function App() {
   const specificHours = [6, 9, 12, 15, 18, 21]; 
 
   const todayDates: SpecificTimeProps[] = specificHours.map(index => {
-    const hourForecast = weatherData?.forecast.forecastday[0].hour[index];
+    const hourForecast = weatherData?.forecast?.forecastday?.[0]?.hour?.[index];
     if (hourForecast) {
       const specHour: SpecificTimeProps = {
         time: new Date(hourForecast.time),
@@ -80,19 +79,14 @@ function App() {
   console.log(JSON.parse(JSON.stringify(todayDates)));
 
   const mainWeatherCardProps: MainWeatherCardProps = {
-    name: weatherData?.location.name ? weatherData?.location.name : '' ,
-    code: weatherData?.current.condition.code ? weatherData?.current.condition.code : 1000,
-    country: weatherData?.location.country ? weatherData?.location.country : '',
-    conditionText: weatherData?.current.condition.text ? weatherData?.current.condition.text : 'Sunny',
-    temp: weatherData?.current.temp_c ? weatherData?.current.temp_c : 0,
-    windKph: weatherData?.current.wind_kph ? weatherData?.current.wind_kph : 0,
-    windDir: weatherData?.current.wind_dir ? weatherData?.current.wind_dir : '',
-    windDegree: weatherData?.current.wind_degree ? weatherData?.current.wind_degree : 0,
-  }
-
-  const mainWeatherData: MainPageProps  = {
-    mainWeatherCardProps: mainWeatherCardProps,
-    todayForecast: todayDates
+    name: weatherData?.location?.name ? weatherData?.location?.name : '' ,
+    code: weatherData?.current?.condition.code ? weatherData?.current?.condition?.code : 1000,
+    country: weatherData?.location?.country ? weatherData?.location?.country : '',
+    conditionText: weatherData?.current?.condition.text ? weatherData?.current?.condition?.text : 'Sunny',
+    temp: weatherData?.current?.temp_c ? weatherData?.current?.temp_c : 0,
+    windKph: weatherData?.current?.wind_kph ? weatherData?.current?.wind_kph : 0,
+    windDir: weatherData?.current?.wind_dir ? weatherData?.current?.wind_dir : '',
+    windDegree: weatherData?.current?.wind_degree ? weatherData?.current?.wind_degree : 0,
   }
 
   const handleResult = (result:string) =>{
@@ -105,15 +99,15 @@ function App() {
 
   return (
     <div className="background">
-      <Container className="p-4" fluid="md" gap={3}>
+      <Container className="p-3" fluid="md">
         <Row>
           <Col>
             <Navbar />
           </Col>
           <Col xs={10}>
             <MainPage 
-              mainWeatherCardProps={mainWeatherData.mainWeatherCardProps}
-              todayForecast={mainWeatherData.todayForecast}
+              mainWeatherCardProps={mainWeatherCardProps}
+              todayForecast={todayDates}
               onResult={handleResult}
             />
           </Col>

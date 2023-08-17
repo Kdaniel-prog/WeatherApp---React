@@ -3,10 +3,10 @@ import Card from "../UI/Card/Card";
 import "./SearchBar.css";
 import CitiesProps from "./CitiesProps";
 import SearchResult from "./SearchResult/SearchResult";
+import SearchBarProps from "./SearchBarProps";
 
 
-
-const SearchBar = (props) => {
+const SearchBar = (props: SearchBarProps) => {
     const [cities, setCities] = useState<CitiesProps[] | []>([]);
     const [searchValue, setSearchValue] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
