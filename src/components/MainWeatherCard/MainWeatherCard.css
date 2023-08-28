@@ -21,7 +21,13 @@
     font-size: 16px;
     padding-right: 5px;
 }
+.weather--wind__icon{
+    background-color: white;
+}
 
+.weather--wind__wrapper:hover .weather--wind__icon{
+    background-color: gray;
+}
 .spacing{
     padding-bottom: 20px;
 }

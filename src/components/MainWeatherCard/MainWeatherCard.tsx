@@ -15,7 +15,6 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
         WebkitMask: `url(${wind}) no-repeat center / contain`,
         width: '32px',
         height: '32px',
-        backgroundColor: 'white',
         marginLeft: '-30px',
         marginRight: '5px',
         marginTop: '25px',
@@ -37,10 +36,10 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
                             </Row>
                         </Container>
                         <Container>
-                            <Row>
+                            <Row className='weather--wind__wrapper'>
                                 <Col className='weather--group'>
                                 <p className='weather--wind__title'>Wind</p>
-                                <span style={windStyle}>
+                                <span className='weather--wind__icon' style={windStyle}>
                                 </span>
                                 <ul className='weather--wind'>
                                     <li>

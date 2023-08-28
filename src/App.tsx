@@ -62,18 +62,18 @@ function App() {
     const hourForecast = weatherData?.forecast?.forecastday?.[0]?.hour?.[index];
     if (hourForecast) {
       const specHour: SpecificTimeProps = {
-        time: new Date(hourForecast.time),
-        temp_c: hourForecast.temp_c,
-        code: hourForecast.condition.code
+          time: new Date(hourForecast.time),
+          temp_c: hourForecast.temp_c,
+          code: hourForecast.condition.code
       };
       return specHour;
     } else {
-      const specHour: SpecificTimeProps = {
+      const nullObjectHour: SpecificTimeProps = {
         time: new Date(),
         temp_c: 0,
         code: 0,
       };
-      return specHour;
+      return nullObjectHour;
   }});
 
   console.log(JSON.parse(JSON.stringify(todayDates)));
