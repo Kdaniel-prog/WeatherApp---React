@@ -12,11 +12,13 @@
     text-align: left;
     width: 100%;
   }
-  
+  .hover{
+    background-color: rgb(222, 218, 218);
+  }
   .search-result:hover {
     background-color: rgb(222, 218, 218);
   }
-  
+
   .loading-text {
     margin: 0px;
     text-align: center;
