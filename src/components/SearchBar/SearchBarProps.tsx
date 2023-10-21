@@ -1,3 +1,5 @@
+import CitiesProps from "./CitiesProps";
+
 export default interface SearchBarProps{
-    onResult(value: string): void;
+    onResult(value: CitiesProps): void;
 }

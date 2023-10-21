@@ -1,14 +1,25 @@
 import React from "react";
 import SearchResultProps from "./SearchResultProps";
 import "./SearchResult.css";
+import CitiesProps from "../CitiesProps";
 
 const SearchResult = (props: SearchResultProps) => {
   const selectedIndex = props.index - 1;
 
   const handleClick = (e: React.MouseEvent<HTMLOptionElement>) => {
     const target = e.target as HTMLOptionElement;
-    const value = target.text;
-    props.onResult(value);
+    const [selectedCity, selectedCountry, selectedRegio] = target.text.split('|').map(item => item.trim());
+    const selected: CitiesProps | undefined = props.cities.find(city => {
+       // Check if selectedRegio is undefined before comparing it with city.region
+      if (selectedRegio === undefined) {
+        return city.name === selectedCity && city.country === selectedCountry && city?.region.length === 0;
+      } else {
+        return city.name === selectedCity && city.country === selectedCountry && city.region === selectedRegio;
+      }
+    })
+    if(selected){
+      props.onResult(selected);
+    }
   };
   
   if(!props.show){
@@ -40,9 +51,10 @@ const SearchResult = (props: SearchResultProps) => {
   }
   
   if (props.enterPressed && props.cities.length > 0 && selectedIndex >= 0) {
-    const value = props?.cities[selectedIndex]?.name;
-    if(value){
-        props.onEnterPressed(value);
+    const selected: CitiesProps = props?.cities[selectedIndex];
+    console.log(selected)
+    if(selected){
+        props.onEnterPressed(selected);
     }
   }
 
@@ -56,7 +68,7 @@ const SearchResult = (props: SearchResultProps) => {
               className={`search-result ${selectedIndex === index ? "hover" : ""}`}
               onClick={handleClick}
             >
-              {item.name}
+              {`${item.name} | ${item.country} | ${item.region}`}
             </option>
           );
         })}

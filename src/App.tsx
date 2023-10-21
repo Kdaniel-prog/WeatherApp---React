@@ -5,6 +5,7 @@ import WeatherData from "./api/apiWeatherProps//WeatherData";
 import TOKEN from "./api/apiWeatherProps/Token";
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./pages/MainPage";
+import CitiesProps from "./components/SearchBar/CitiesProps";
 import "./App.css";
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
       fetchData();
   }, [apiUrl, fetchData]);
  
-  const handleResult = (city: string) => {
-    setApiUrl(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=${city}&days=1&aqi=no&alerts=no`);
+  const handleResult = (city: CitiesProps) => {
+    setApiUrl(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=${city.lat},${city.lon}&days=1&aqi=no&alerts=no`);
   };
 
   return (

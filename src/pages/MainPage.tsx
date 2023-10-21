@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import MainPageProps from "./MainPageProps";
 import { SpecificTimeProps } from "../components/TodayForecast/SpecificTimeProps";
 import MainWeatherCardProps from "../components/MainWeatherCard/MainWeatherCardProps";
+import CitiesProps from "../components/SearchBar/CitiesProps";
 
 const MainPage = (props: MainPageProps) => {
 
@@ -59,7 +60,7 @@ const MainPage = (props: MainPageProps) => {
     };
 
 
-    const handleResult = (result:string) =>{
+    const handleResult = (result: CitiesProps) =>{
         props.onResult(result);
     }
 

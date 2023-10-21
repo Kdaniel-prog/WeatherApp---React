@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Card from "../UI/Card/Card";
 import "./SearchBar.css";
 import CitiesProps from "./CitiesProps";
@@ -24,6 +24,7 @@ const SearchBar = (props: SearchBarProps) => {
       const response = await fetch(apiUrl);
       console.log(apiUrl)
       const data = await response.json();
+      console.log(JSON.parse(JSON.stringify(data)));
       data ? setIsEmpty(false) : setIsEmpty(true);
       setIsLoading(false);
       return data;
@@ -54,6 +55,7 @@ const SearchBar = (props: SearchBarProps) => {
   }, [debouncedSearch]);
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    setShowResult(true);
     const keys = ["ArrowUp", "ArrowDown", "Enter"];
     if (!keys.includes(event.code)) {
       return;
@@ -70,7 +72,7 @@ const SearchBar = (props: SearchBarProps) => {
         setIndex(index - 1);
       }
       if (index === 1 || index === 0) {
-        setIndex(5);
+        setIndex(cities.length);
       }
       return;
     }
@@ -85,20 +87,8 @@ const SearchBar = (props: SearchBarProps) => {
     }
   };
 
-  const handleResult = (value: string) => {
-    const newCity = cities.find((c) => {
-      if (c.name == value) {
-        return c;
-      }
-    });
-
-    if (newCity) {
-      setCities([{ ...newCity }]);
-    }else{
-        setCities([]);
-    }
-
-    setSearchValue(value);
+  const handleResult = (value: CitiesProps) => {
+    setSearchValue(value.name);
     setShowResult(false);
     props.onResult(value);
   };
@@ -121,20 +111,10 @@ const SearchBar = (props: SearchBarProps) => {
     setIsMouseIn(false);
   };
 
-  const handleEnter = (value: string) => {
-    const newCity = cities.find((c) => {
-      if (c.name == value) {
-        return c;
-      }
-    });
-
-    if (newCity) {
-      setCities([{ ...newCity }]);
-    }
-
+  const handleEnter = (value: CitiesProps) => {
     setEnterPressed(false);
     setIndex(0);
-    setSearchValue(value);
+    setSearchValue(value.name);
     setShowResult(false);
     props.onResult(value);
   };

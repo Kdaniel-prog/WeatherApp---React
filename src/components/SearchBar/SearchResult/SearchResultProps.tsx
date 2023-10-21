@@ -9,7 +9,7 @@ export default interface SearchResultProps {
     show: boolean,
     cities: [] | CitiesProps[],
     
-    onResult(value: string): void;
-    onEnterPressed(value: string): void;
+    onResult(value: CitiesProps): void;
+    onEnterPressed(value: CitiesProps): void;
     onRessetEnter(): void
 }
