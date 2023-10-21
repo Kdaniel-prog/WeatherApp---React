@@ -26,7 +26,8 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
                 <Row className="justify-content-md-center">
                     <Col xs={7}>
                         <h1>{props.name}</h1>
-                        <p className='weather--country'>{props.country}</p>
+                        <p className='weather--country'>Country: {props.country}</p>
+                        <p className='weather--country'>Regio: {props.regio}</p>
                         <Container>
                             <Row>
                                 <Col className='weather--group'>

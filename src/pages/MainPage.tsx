@@ -33,8 +33,11 @@ const MainPage = (props: MainPageProps) => {
   });
 
     const mainWeatherCardProps: MainWeatherCardProps = {
-        name: props?.weatherData?.location?.name 
-            ? props?.weatherData?.location?.name 
+        name: props?.weatherData?.location?.name
+            ? props?.weatherData?.location?.name
+            : "",
+        regio: props?.weatherData?.location?.region
+            ? props?.weatherData?.location?.region
             : "",
         code: props?.weatherData?.current?.condition.code
             ? props?.weatherData?.current?.condition?.code
@@ -45,8 +48,8 @@ const MainPage = (props: MainPageProps) => {
         conditionText: props?.weatherData?.current?.condition.text
             ? props?.weatherData?.current?.condition?.text
             : "Sunny",
-        temp: props?.weatherData?.current?.temp_c 
-            ? props?.weatherData?.current?.temp_c 
+        temp: props?.weatherData?.current?.temp_c
+            ? props?.weatherData?.current?.temp_c
             : 0,
         windKph: props?.weatherData?.current?.wind_kph
             ? props?.weatherData?.current?.wind_kph
@@ -57,6 +60,7 @@ const MainPage = (props: MainPageProps) => {
         windDegree: props?.weatherData?.current?.wind_degree
             ? props?.weatherData?.current?.wind_degree
             : 0,
+        
     };
 
 
@@ -70,6 +74,7 @@ const MainPage = (props: MainPageProps) => {
             <MainWeatherCard
                 name={mainWeatherCardProps.name}
                 code={mainWeatherCardProps.code}
+                regio={mainWeatherCardProps.regio}
                 country={mainWeatherCardProps.country}
                 conditionText={mainWeatherCardProps.conditionText}
                 temp={mainWeatherCardProps.temp}
