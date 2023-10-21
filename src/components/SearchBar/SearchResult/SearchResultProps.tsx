@@ -6,8 +6,10 @@ export default interface SearchResultProps {
     searchValue: string,
     isLoading: boolean,
     isEmpty: boolean,
+    show: boolean,
     cities: [] | CitiesProps[],
     
     onResult(value: string): void;
     onEnterPressed(value: string): void;
+    onRessetEnter(): void
 }

@@ -27,6 +27,9 @@ const SearchBar = (props: SearchBarProps) => {
             setCities(data);
             cities.length === 0 ? setIsEmpty(true) : setIsEmpty(false);
             setIsLoading(false);
+            if(!isEmpty){
+                setShowResult(true);
+            }
         } catch (error) {
             console.log(error)
         }
@@ -47,6 +50,7 @@ const SearchBar = (props: SearchBarProps) => {
         }
 
         if(event.code === 'Enter'){
+            event.preventDefault();
             setEnterPressed(true);
             return;
         }
@@ -71,11 +75,20 @@ const SearchBar = (props: SearchBarProps) => {
         }
     }
 
-    const handleResult = (resultValue: string) =>{
-        console.log(resultValue);
-        setSearchValue(resultValue);
+    const handleResult = (value: string) =>{
+        const newCity = cities.find(c=> {
+            if(c.name == value){
+                return c;
+            }
+        });
+        
+        if(newCity){
+            setCities([{...newCity}]);
+        }
+
+        setSearchValue(value);
         setShowResult(false);
-        props.onResult(resultValue);
+        props.onResult(value);
     }
 
     const showSearchResult = () => {
@@ -86,7 +99,6 @@ const SearchBar = (props: SearchBarProps) => {
         if(!isMouseIn){
             setShowResult(false);
         }
-        
     }
 
     const checkMouseIn = () =>{
@@ -98,10 +110,25 @@ const SearchBar = (props: SearchBarProps) => {
     }
 
     const handleEnter = (value:string) =>{
+        const newCity = cities.find(c=> {
+            if(c.name == value){
+                return c;
+            }
+        });
+        
+        if(newCity){
+            setCities([{...newCity}]);
+        }
+
         setEnterPressed(false);
         setIndex(0);
         setSearchValue(value);
         setShowResult(false);
+        props.onResult(value);
+    }
+
+    const handleRessetEnter = () =>{
+        setEnterPressed(false);
     }
 
     return (
@@ -116,18 +143,17 @@ const SearchBar = (props: SearchBarProps) => {
                     onClick={showSearchResult}
                 ></input>
             </Card>
-            {showResult 
-                ? <SearchResult 
-                    cities={cities}
-                    index={index}
-                    enterPressed={enterPressed}
-                    searchValue={searchValue} 
-                    isEmpty={isEmpty} 
-                    isLoading={isLoading}
-                    onEnterPressed={handleEnter} 
-                    onResult={handleResult}/> 
-                : <div></div>
-            }
+            <SearchResult 
+                cities={cities}
+                show={showResult}
+                index={index}
+                enterPressed={enterPressed}
+                searchValue={searchValue} 
+                isEmpty={isEmpty} 
+                isLoading={isLoading}
+                onRessetEnter={handleRessetEnter}
+                onEnterPressed={handleEnter} 
+                onResult={handleResult}/>
         </div>
     );
 };

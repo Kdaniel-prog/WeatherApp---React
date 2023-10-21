@@ -10,6 +10,10 @@ const SearchResult = (props: SearchResultProps) => {
     const value = target.text;
     props.onResult(value);
   };
+  
+  if(!props.show){
+    return <></>
+  }
 
   if (props.isLoading) {
     return (
@@ -31,8 +35,12 @@ const SearchResult = (props: SearchResultProps) => {
     );
   }
   
-  if (props.enterPressed && props.cities.length > 0) {
-    const value = props.cities[selectedIndex].name;
+  if (props.enterPressed && selectedIndex < 0) {
+    props.onRessetEnter();
+  }
+  
+  if (props.enterPressed && props.cities.length > 0 && selectedIndex >= 0) {
+    const value = props?.cities[selectedIndex]?.name;
     if(value){
         props.onEnterPressed(value);
     }
