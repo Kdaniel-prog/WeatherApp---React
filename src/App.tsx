@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-import { Container, Col, Row } from "react-bootstrap";
 import WeatherData from "./api/apiWeatherProps//WeatherData";
 import TOKEN from "./api/apiWeatherProps/Token";
-import Navbar from "./components/Navbar/Navbar";
-import MainPage from "./pages/MainPage";
+import MainPage from "./pages/MainPage/MainPage";
 import CitiesProps from "./components/SearchBar/CitiesProps";
-import classes from "./App.module.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ForecastPage from "./pages/ForecastPage";
+import RootLayout from "./pages/RootLayout/RootLayout";
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -38,21 +38,19 @@ function App() {
     setApiUrl(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=${city.lat},${city.lon}&days=1&aqi=no&alerts=no`);
   };
 
-  return (
-    <Container className={`p-3 ${classes.text}`} fluid="md">
-      <Row>
-        <Col>
-          <Navbar />
-        </Col>
-        <Col xs={10}>
-          <MainPage
-            weatherData={weatherData}
-            onResult={handleResult}
-          />
-        </Col>
-      </Row>
-    </Container>
-  );
+  const router = createBrowserRouter([
+    { 
+      path: '/', 
+      element: <RootLayout onSendResult={handleResult} />, 
+      children:[
+        { path: '/', element: <MainPage weatherData={weatherData} onResult={handleResult} />},
+        { path: '/forecast', element: <ForecastPage /> }
+      ],
+    }
+  ]);
+
+  return <RouterProvider router={router} />
+
 }
 
 export default App;

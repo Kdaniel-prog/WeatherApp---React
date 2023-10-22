@@ -1,17 +1,19 @@
 import React from "react";
 import Card from "../UI/Card/Card";
+import { NavLink } from "react-router-dom";
 
 import classes from './Navbar.module.css';
 
 const Navbar = () =>{
-    const handleClick = (event: HTMLElement<>) =>{
-
-    }
 
     return (
         <Card className={`${classes.navbar__bg}`}>
-            <p className={`${classes.navbar__item}`} onClick={handleClick} data-id="home">Daily Weather</p>
-            <p className={`${classes.navbar__item}`} onClick={handleClick} data-id="forecast">Forecast</p>
+            <NavLink to="/" className={({isActive})=>{
+                return isActive ? classes.navbar__item__active : classes.navbar__item;
+            }}end={true}>Daily Weather</NavLink>
+            <NavLink to="/forecast"  className={({isActive})=>{
+                return isActive ? classes.navbar__item__active : classes.navbar__item;
+            }}>Forecast</NavLink>
         </Card>
     );
 }

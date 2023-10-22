@@ -1,17 +1,15 @@
-import MainWeatherCard from "../components/MainWeatherCard/MainWeatherCard";
-import TodayForecast from "../components/TodayForecast/TodayForecast";
-import SearchBar from "../components/SearchBar/SearchBar";
+import MainWeatherCard from "../../components/MainWeatherCard/MainWeatherCard";
+import TodayForecast from "../../components/TodayForecast/TodayForecast";
 import MainPageProps from "./MainPageProps";
-import { SpecificTimeProps } from "../components/TodayForecast/SpecificTimeProps";
-import MainWeatherCardProps from "../components/MainWeatherCard/MainWeatherCardProps";
-import CitiesProps from "../components/SearchBar/CitiesProps";
+import { SpecificTimeProps } from "../../components/TodayForecast/SpecificTimeProps";
+import MainWeatherCardProps from "../../components/MainWeatherCard/MainWeatherCardProps";
 
 const MainPage = (props: MainPageProps) => {
 
-     // Extract specific hours at indices 6, 9, 12, 15, 18, and 21
-  const specificHours = [6, 9, 12, 15, 18, 21];
+    // Extract specific hours at indices 6, 9, 12, 15, 18, and 21
+    const specificHours = [6, 9, 12, 15, 18, 21];
 
-  const todayDates: SpecificTimeProps[] = specificHours.map((index) => {
+    const todayDates: SpecificTimeProps[] = specificHours.map((index) => {
     const hourForecast = props?.weatherData?.forecast?.forecastday?.[0]?.hour?.[index];
 
     if (hourForecast) {
@@ -60,17 +58,10 @@ const MainPage = (props: MainPageProps) => {
         windDegree: props?.weatherData?.current?.wind_degree
             ? props?.weatherData?.current?.wind_degree
             : 0,
-        
     };
-
-
-    const handleResult = (result: CitiesProps) =>{
-        props.onResult(result);
-    }
 
     return(
         <div>
-            <SearchBar onResult={handleResult} />
             <MainWeatherCard
                 name={mainWeatherCardProps.name}
                 code={mainWeatherCardProps.code}
