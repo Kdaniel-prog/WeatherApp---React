@@ -1,22 +1,21 @@
 import WeatherImage from "../WeatherImage/WeatherImage";
 import {SpecificTimeProps} from "./SpecificTimeProps";
 import Col from 'react-bootstrap/Col';
-import './SpecificTime.css';
+import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
     const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
     return (
         <Col>
             <div>
-                <p className="weather--text">{timeString}</p>
+                <p className={`${classes.weather__text}`} >{timeString}</p>
             </div>
-            
-            <div className="image-container">
-                <div className="centered-content">
+            <div className={`${classes.image__container}`}>
+                <div className={`${classes.centered__content}`}>
                     <WeatherImage width={70} code={props.code}/>
                 </div>
             </div>
-            <p className="weather--text">{props.temp_c}°</p>
+            <p className={`${classes.weather__text}`}>{props.temp_c}°</p>
         </Col>
     )
 }

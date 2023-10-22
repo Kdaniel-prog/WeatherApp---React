@@ -1,14 +1,17 @@
 import React from "react";
 import Card from "../UI/Card/Card";
 
-import './Navbar.css';
+import classes from './Navbar.module.css';
 
 const Navbar = () =>{
+    const handleClick = (event: HTMLElement<>) =>{
+
+    }
 
     return (
-        <Card className="navbar--bg">
-            <p>Weather</p>
-            <p>Item 2</p>
+        <Card className={`${classes.navbar__bg}`}>
+            <p className={`${classes.navbar__item}`} onClick={handleClick} data-id="home">Daily Weather</p>
+            <p className={`${classes.navbar__item}`} onClick={handleClick} data-id="forecast">Forecast</p>
         </Card>
     );
 }

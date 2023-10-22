@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import Card from "../UI/Card/Card";
-import "./SearchBar.css";
 import CitiesProps from "./CitiesProps";
 import SearchResult from "./SearchResult/SearchResult";
 import SearchBarProps from "./SearchBarProps";
 import TOKEN from "../../api/apiWeatherProps/Token";
+import classes from "./SearchBar.module.css";
 import { debounce } from "lodash"
 
 
@@ -22,9 +22,10 @@ const SearchBar = (props: SearchBarProps) => {
     try {
       setIsLoading(true);
       const response = await fetch(apiUrl);
-      console.log(apiUrl)
       const data = await response.json();
-      console.log(JSON.parse(JSON.stringify(data)));
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
       data ? setIsEmpty(false) : setIsEmpty(true);
       setIsLoading(false);
       return data;
@@ -45,7 +46,7 @@ const SearchBar = (props: SearchBarProps) => {
   const debouncedSearch = React.useRef(
     debounce(async (criteria) => {
       setCities(await fetchData(criteria));
-    }, 500)
+    }, 1000)
   ).current;
 
   React.useEffect(() => {
@@ -129,7 +130,7 @@ const SearchBar = (props: SearchBarProps) => {
       onMouseEnter={checkMouseIn}
       onMouseLeave={checkMouseOut}
     >
-      <Card className="card--align">
+      <Card className={`${classes.card__align}`}>
         <input
           type="text"
           value={searchValue}

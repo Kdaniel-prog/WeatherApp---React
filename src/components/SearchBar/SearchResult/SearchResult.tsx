@@ -1,6 +1,6 @@
 import React from "react";
 import SearchResultProps from "./SearchResultProps";
-import "./SearchResult.css";
+import classes from "./SearchResult.module.css";
 import CitiesProps from "../CitiesProps";
 
 const SearchResult = (props: SearchResultProps) => {
@@ -28,9 +28,9 @@ const SearchResult = (props: SearchResultProps) => {
 
   if (props.isLoading) {
     return (
-      <div className="result-wrapper">
-        <div className="search-result-wrapper">
-          <p className="loading-text">Loading...</p>
+      <div className={`${classes.result__wrapper}`}>
+        <div className={`${classes.search__result__wrapper}`}>
+          <p className={`${classes.loading__text}`}>Loading...</p>
         </div>
       </div>
     );
@@ -38,9 +38,9 @@ const SearchResult = (props: SearchResultProps) => {
 
   if (props.isEmpty || props.cities.length === 0) {
     return (
-      <div className="result-wrapper">
-        <div className="search-result-wrapper">
-          <p className="loading-text">No result</p>
+      <div className={`${classes.result__wrapper}`}>
+        <div className={`${classes.search__result__wrapper}`}>
+          <p className={`${classes.loading__text}`}>No result</p>
         </div>
       </div>
     );
@@ -59,13 +59,13 @@ const SearchResult = (props: SearchResultProps) => {
   }
 
   return (
-    <div className="result-wrapper">
-      <div className="search-result-wrapper">
+    <div className={`${classes.result__wrapper}`}>
+      <div className={`${classes.search__result__wrapper}`}>
         {props.cities.map((item, index) => {
           return (
             <option
               key={index}
-              className={`search-result ${selectedIndex === index ? "hover" : ""}`}
+              className={`${classes.search__result}  ${selectedIndex === index ? classes.hover : ""}`}
               onClick={handleClick}
             >
               {`${item.name} | ${item.country} | ${item.region}`}

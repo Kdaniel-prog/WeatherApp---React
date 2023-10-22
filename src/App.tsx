@@ -6,7 +6,7 @@ import TOKEN from "./api/apiWeatherProps/Token";
 import Navbar from "./components/Navbar/Navbar";
 import MainPage from "./pages/MainPage";
 import CitiesProps from "./components/SearchBar/CitiesProps";
-import "./App.css";
+import classes from "./App.module.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -14,7 +14,15 @@ function App() {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl,{
+        method: "get",
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      }})
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {
@@ -23,7 +31,7 @@ function App() {
   },[apiUrl])
 
   useEffect(() =>{
-      fetchData();
+      fetchData(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=Budapest&days=1&aqi=no&alerts=no`);
   }, [apiUrl, fetchData]);
  
   const handleResult = (city: CitiesProps) => {
@@ -31,21 +39,19 @@ function App() {
   };
 
   return (
-    <div className="background">
-      <Container className="p-3" fluid="md">
-        <Row>
-          <Col>
-            <Navbar />
-          </Col>
-          <Col xs={10}>
-            <MainPage
-              weatherData={weatherData}
-              onResult={handleResult}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container className={`p-3 ${classes.text}`} fluid="md">
+      <Row>
+        <Col>
+          <Navbar />
+        </Col>
+        <Col xs={10}>
+          <MainPage
+            weatherData={weatherData}
+            onResult={handleResult}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

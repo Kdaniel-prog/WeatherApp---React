@@ -1,11 +1,10 @@
 import React from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import wind from "../../assets/wind.png";
-
-import "./MainWeatherCard.css";
+import classes from "./MainWeatherCard.module.css";
 import MainWeatherCardProps from './MainWeatherCardProps';
 import WeatherImage from '../WeatherImage/WeatherImage';
 
@@ -21,28 +20,28 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
     };
 
     return (
-        <div className='spacing'>
+        <div className={`${classes.spacing}`}>
             <Container className="p-4" fluid="md">
                 <Row className="justify-content-md-center">
                     <Col xs={7}>
                         <h1>{props.name}</h1>
-                        <p className='weather--country'>Country: {props.country}</p>
-                        <p className='weather--country'>Regio: {props.regio}</p>
+                        <p className={`${classes.weather__country}`}>Country: {props.country}</p>
+                        <p className={`${classes.weather__country}`}>Regio: {props.regio}</p>
                         <Container>
                             <Row>
-                                <Col className='weather--group'>
+                                <Col className={`${classes.weather__group}`}>
                                     <h1>{props.temp}°</h1>
-                                    <p className='weather--condition'>{props.conditionText}</p>
+                                    <p className={`${classes.weather__condition}`}>{props.conditionText}</p>
                                 </Col>
                             </Row>
                         </Container>
                         <Container>
-                            <Row className='weather--wind__wrapper'>
-                                <Col className='weather--group'>
-                                <p className='weather--wind__title'>Wind</p>
-                                <span className='weather--wind__icon' style={windStyle}>
+                            <Row className={`${classes.weather__wind__wrapper}`}>
+                                <Col className={`${classes.weather__group}`}>
+                                <p className={`${classes.weather__wind__title}`}>Wind</p>
+                                <span className={`${classes.weather__wind__icon}`} style={windStyle}>
                                 </span>
-                                <ul className='weather--wind'>
+                                <ul className={`${classes.weather__wind}`}>
                                     <li>
                                         km/h: {props.windKph}  
                                     </li>
@@ -58,7 +57,7 @@ const MainWeatherCard = (props: MainWeatherCardProps) =>{
                         </Container>
                     </Col>
                     <Col>
-                        <div className='weather--img'>
+                        <div className={`${classes.weather__img}`}>
                             <WeatherImage width={160} code={props.code}/>
                         </div>
                     </Col>

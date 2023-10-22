@@ -1,7 +1,7 @@
 import Card from '../UI/Card/Card';
 import SpecificTime from './SpecificTime';
 import {SpecificTimeCollection} from './SpecificTimeProps';
-import './TodayForecast.css';
+import classes from './TodayForecast.module.css';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +9,9 @@ import Row from 'react-bootstrap/Row';
 const TodayForecast = (props: SpecificTimeCollection) => {
 
     return (
-        <Card className='card--items'>
+        <Card className={`${classes.card__items}`}>
             <div>
-                <p className='weather--title'>
+                <p className={`${classes.weather__title}`}>
                     Today's Forecast
                 </p>
             </div>

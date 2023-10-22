@@ -1,14 +1,14 @@
-.weather--text{
+.weather__text{
     text-align: center;
     padding-top: 5px;
 }
 
-.image-container {
+.image__container {
     position: relative;
     padding-top: 100%;
 }
 
-.centered-content {
+.centered__content {
     position: absolute;
     top: 50%;
     left: 50%;

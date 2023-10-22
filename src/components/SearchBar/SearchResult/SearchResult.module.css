@@ -1,10 +1,10 @@
 
-.result-wrapper {
+.result__wrapper {
     position: relative;
     top: 10px;
   }
   
-  .search-result {
+  .search__result {
     background-color: white;
     color: black;
     cursor: pointer;
@@ -15,22 +15,22 @@
   .hover{
     background-color: rgb(222, 218, 218);
   }
-  .search-result:hover {
+  .search__result:hover {
     background-color: rgb(222, 218, 218);
   }
 
-  .loading-text {
+  .loading__text {
     margin: 0px;
     text-align: center;
   }
-  .loading-text:hover {
+  .loading__text:hover {
       background-color: rgb(222, 218, 218);
   }
-  .selected-option{
+  .selected__option{
     background-color: rgb(222, 218, 218);
   }
   
-  .search-result-wrapper {
+  .search__result__wrapper {
     background-color: white;
     color: black;
     padding: 10px;
@@ -43,7 +43,7 @@
     z-index: 2;
   }
   
-  .search-loading {
+  .search__loading {
     color: black;
     padding: 50px;
   }

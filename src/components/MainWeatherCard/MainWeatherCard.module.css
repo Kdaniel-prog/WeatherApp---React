@@ -1,31 +1,37 @@
-.weather--img{
+.weather__img{
     float:right;
 }
-.weather--country{
+
+.weather__country{
     font-size: 13px;
     padding-left: 40px;
 }
-.weather--condition{
+
+.weather__condition{
     font-size: 28px;
     padding-left: 10px;
     padding-top: 5px;
 }
-.weather--wind{
+
+.weather__wind{
     font-size: 14px;
     font-style: initial
 }
-.weather--group{
+
+.weather__group{
     display: flex;
 }
-.weather--wind__title{
+
+.weather__wind__title{
     font-size: 16px;
     padding-right: 5px;
 }
-.weather--wind__icon{
+
+.weather__wind__icon{
     background-color: white;
 }
 
-.weather--wind__wrapper:hover .weather--wind__icon{
+.weather__wind__wrapper:hover .weather__wind__icon{
     background-color: gray;
 }
 .spacing{
