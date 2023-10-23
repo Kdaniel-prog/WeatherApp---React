@@ -1,4 +1,4 @@
-export default interface WeatherImage {
+export default interface WeatherImageObject {
     path: string;
     codes: string;
 }

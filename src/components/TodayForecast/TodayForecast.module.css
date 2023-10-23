@@ -8,3 +8,53 @@
 .card__items{
     align-items: normal;
 }
+
+button{
+    all:unset;
+}
+.wrapper{
+    overflow: hidden;
+}
+.today_wrapper{
+    position: relative;
+}
+.button{
+    color: #fff;
+    background-color: #0c7db8;
+    border-color: #0b75ac;
+    border-radius: .625rem;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.button:hover{
+    background-color: rgb(11, 117, 172);
+}
+
+.button:focus{
+    box-shadow: 0 0 0 transparent, 0 0 0 0.2rem rgba(14, 131, 189, 0.547);
+}
+
+.next__button{
+   right: -10px;
+   top: +20%;
+}
+
+.back__button{
+   left: -10px;
+   top: +20%;
+}
+
+.page__row{
+    display: flex;
+    flex-direction: row;
+    width: 2232px;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s;
+}
+
+.hide{
+    display: none;
+}

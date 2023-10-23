@@ -1,0 +1,14 @@
+.weather__title{
+    font-size: 26px;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 5%;
+}
+
+.card__items{
+    align-items: normal;
+}
+
+.row__items{
+    justify-content: space-around;
+}

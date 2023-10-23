@@ -1,12 +1,28 @@
+import { useState, useRef } from 'react';
+import Container from 'react-bootstrap/Container';
+
 import Card from '../UI/Card/Card';
 import SpecificTime from './SpecificTime';
 import {SpecificTimeCollection} from './SpecificTimeProps';
 import classes from './TodayForecast.module.css';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import next from '../../assets/next.png';
+import back from '../../assets/back.png';
 
 const TodayForecast = (props: SpecificTimeCollection) => {
+    const [width, setWidth] = useState(0);
+    const containerRef = useRef(null);
+    
+    const containerWidth = {
+        transform: `translateX(${width}px)`
+    }
+
+    const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) =>{
+        if(event.target.dataset.id === "back"){
+            setWidth(width + containerRef?.current?.clientWidth);
+        }else{
+            setWidth(width - containerRef?.current?.clientWidth);
+        }
+    }
 
     return (
         <Card className={`${classes.card__items}`}>
@@ -15,10 +31,24 @@ const TodayForecast = (props: SpecificTimeCollection) => {
                     Today's Forecast
                 </p>
             </div>
-            <Container>
-                <Row>
-                    {props.datas.map((item, index) => { return <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c}/>})}
-                </Row>
+            <Container className={classes.today_wrapper} ref={containerRef} >
+                <button className={`${classes.button} ${classes.back__button} ${width >= 0 ? classes.hide : classes.show}`} data-id="back" onClick={handleButtonClick}>
+                    <img src={back} width="20px" data-id="back"/>
+                </button>
+                <button className={`${classes.button} ${classes.next__button} 
+                    ${width === 0 || width > containerRef?.current?.clientWidth * -2 
+                    ? classes.show : classes.hide}`} data-id="next" onClick={handleButtonClick}>
+                    <img src={next} width="20px" data-id="next"/>
+                </button>
+                <div className={classes.wrapper}>
+                    <div className={classes.page__row} style={containerWidth}>
+                        {props.datas.map((item, index) => {
+                            return (
+                                <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c} hide={false} />
+                            )
+                        })}  
+                    </div>
+                </div>
             </Container>
         </Card>
     )

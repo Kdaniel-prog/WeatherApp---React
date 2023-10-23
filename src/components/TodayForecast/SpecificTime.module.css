@@ -15,3 +15,11 @@
     transform: translate(-50%, -50%);
     /* Other styling for the centered content */
 }
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}

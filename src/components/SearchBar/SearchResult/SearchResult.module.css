@@ -12,9 +12,11 @@
     text-align: left;
     width: 100%;
   }
+  
   .hover{
     background-color: rgb(222, 218, 218);
   }
+
   .search__result:hover {
     background-color: rgb(222, 218, 218);
   }
@@ -23,9 +25,11 @@
     margin: 0px;
     text-align: center;
   }
+
   .loading__text:hover {
       background-color: rgb(222, 218, 218);
   }
+
   .selected__option{
     background-color: rgb(222, 218, 218);
   }

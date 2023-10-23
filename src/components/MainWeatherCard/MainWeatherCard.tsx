@@ -1,8 +1,8 @@
 import React from 'react';
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import wind from "../../assets/wind.png";
 import classes from "./MainWeatherCard.module.css";
 import MainWeatherCardProps from './MainWeatherCardProps';

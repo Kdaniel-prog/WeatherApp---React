@@ -46,7 +46,7 @@ const SearchBar = (props: SearchBarProps) => {
   const debouncedSearch = React.useRef(
     debounce(async (criteria) => {
       setCities(await fetchData(criteria));
-    }, 1000)
+    }, 2000)
   ).current;
 
   React.useEffect(() => {
@@ -134,7 +134,7 @@ const SearchBar = (props: SearchBarProps) => {
         <input
           type="text"
           value={searchValue}
-          placeholder="Search..."
+          placeholder="Search for cities"
           onKeyUp={handleKey}
           onChange={searchCities}
           onClick={showSearchResult}

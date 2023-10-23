@@ -1,4 +1,5 @@
 import React from "react";
+
 import SearchResultProps from "./SearchResultProps";
 import classes from "./SearchResult.module.css";
 import CitiesProps from "../CitiesProps";

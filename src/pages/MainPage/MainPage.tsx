@@ -3,32 +3,35 @@ import TodayForecast from "../../components/TodayForecast/TodayForecast";
 import MainPageProps from "./MainPageProps";
 import { SpecificTimeProps } from "../../components/TodayForecast/SpecificTimeProps";
 import MainWeatherCardProps from "../../components/MainWeatherCard/MainWeatherCardProps";
+import HourlyForecast from "../../api/apiWeatherProps/HourlyForecast";
 
 const MainPage = (props: MainPageProps) => {
 
-    // Extract specific hours at indices 6, 9, 12, 15, 18, and 21
-    const specificHours = [6, 9, 12, 15, 18, 21];
-
-    const todayDates: SpecificTimeProps[] = specificHours.map((index) => {
-    const hourForecast = props?.weatherData?.forecast?.forecastday?.[0]?.hour?.[index];
-
-    if (hourForecast) {
-        const specHour: SpecificTimeProps = {
-            time: new Date(hourForecast.time),
-            temp_c: hourForecast.temp_c,
-            code: hourForecast.condition.code,
-        };
-        return specHour;
-    
-    } else {
-        const nullObjectHour: SpecificTimeProps = {
-            time: new Date(),
-            temp_c: 0,
+    const nullHourlyForeCast: HourlyForecast[] = [{
+        time: "",
+        temp_c: 0,
+        temp_f: 0,
+        is_day: 0,
+        condition: {
+            text: "",
+            icon: "",
             code: 0
-        };
-        return nullObjectHour;
-    }
-  });
+        }
+    }]
+
+    const hourForecast = props?.weatherData?.forecast?.forecastday?.[0]?.hour
+        ? props?.weatherData?.forecast?.forecastday?.[0]?.hour
+        : nullHourlyForeCast;
+
+    const todayDates: SpecificTimeProps[] = hourForecast.map(hourForecast =>{
+        const specHour: SpecificTimeProps = {
+            time: hourForecast.time ? new Date(hourForecast.time) : new Date(),
+            temp_c: hourForecast.temp_c ? hourForecast.temp_c: 0,
+            code: hourForecast.condition.code,
+        }
+        return specHour;
+    })
+
 
     const mainWeatherCardProps: MainWeatherCardProps = {
         name: props?.weatherData?.location?.name

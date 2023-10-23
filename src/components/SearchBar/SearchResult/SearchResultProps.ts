@@ -11,5 +11,5 @@ export default interface SearchResultProps {
     
     onResult(value: CitiesProps): void;
     onEnterPressed(value: CitiesProps): void;
-    onRessetEnter(): void
+    onRessetEnter(): void;
 }

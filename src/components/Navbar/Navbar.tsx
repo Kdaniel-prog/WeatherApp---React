@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../UI/Card/Card";
 import { NavLink } from "react-router-dom";
 
+import Card from "../UI/Card/Card";
 import classes from './Navbar.module.css';
 
 const Navbar = () =>{
