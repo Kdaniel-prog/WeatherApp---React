@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 
 import Card from '../UI/Card/Card';
@@ -11,8 +11,9 @@ import back from '../../assets/back.png';
 const TodayForecast = (props: SpecificTimeCollection) => {
     const [width, setWidth] = useState(0);
     const containerRef = useRef(null);
+    const pageRowRef = useRef(null);
     
-    const containerWidth = {
+    const border = {
         transform: `translateX(${width}px)`
     }
 
@@ -36,12 +37,12 @@ const TodayForecast = (props: SpecificTimeCollection) => {
                     <img src={back} width="20px" data-id="back"/>
                 </button>
                 <button className={`${classes.button} ${classes.next__button} 
-                    ${width === 0 || width > containerRef?.current?.clientWidth * -2 
+                    ${width === 0 || Math.abs(width) < pageRowRef?.current?.clientWidth - containerRef?.current?.clientWidth
                     ? classes.show : classes.hide}`} data-id="next" onClick={handleButtonClick}>
                     <img src={next} width="20px" data-id="next"/>
                 </button>
                 <div className={classes.wrapper}>
-                    <div className={classes.page__row} style={containerWidth}>
+                    <div className={classes.page__row} style={border} ref={pageRowRef}>
                         {props.datas.map((item, index) => {
                             return (
                                 <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c} hide={false} />
