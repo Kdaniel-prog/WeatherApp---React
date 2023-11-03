@@ -25,6 +25,10 @@ const TodayForecast = (props: SpecificTimeCollection) => {
         }
     }
 
+    useEffect(()=>{
+        setWidth(-containerRef?.current?.clientWidth)
+    },[])
+
     return (
         <Card className={`${classes.card__items}`}>
             <div>
