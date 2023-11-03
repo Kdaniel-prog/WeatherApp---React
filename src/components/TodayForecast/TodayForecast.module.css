@@ -12,12 +12,18 @@
 button{
     all:unset;
 }
+
 .wrapper{
     overflow: hidden;
+    margin-right:10px;
+    margin-left:5px;
 }
+
 .today_wrapper{
     position: relative;
+    padding:0;
 }
+
 .button{
     color: #fff;
     background-color: #0c7db8;
@@ -57,4 +63,8 @@ button{
 
 .hide{
     display: none;
+}
+
+.show{
+    display: block;
 }

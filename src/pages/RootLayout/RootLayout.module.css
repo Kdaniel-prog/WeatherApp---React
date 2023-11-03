@@ -2,3 +2,11 @@
     font-family: 'Rubik', cursive; 
     color:rgb(246, 246, 240);
 }
+
+.padding{
+    padding-bottom: 10px;
+}
+
+.background{
+    background-color: rgb(11, 19, 30);
+}

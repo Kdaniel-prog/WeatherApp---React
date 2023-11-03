@@ -14,12 +14,12 @@ const RootLayout = (props: RootLayoutProps) =>{
     };
 
     return(
-        <Container className={`p-3 ${classes.text}`} fluid="md">
+        <Container className={`p-3 ${classes.text} ${classes.background}`} fluid="md">
         <Row>
-          <Col>
+          <Col className={`p-3 ${classes.padding}`}>
             <Navbar/>
           </Col>
-          <Col xs={10}>
+          <Col xs={12}>
             <SearchBar onResult={handleResult} />
             <Outlet></Outlet>
           </Col>

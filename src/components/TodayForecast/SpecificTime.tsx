@@ -6,7 +6,7 @@ import classes from './SpecificTime.module.css';
 const SpecificTime = (props: SpecificTimeProps) => {
     const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
     return (
-        <Col className={`${props.hide ? classes.hide : classes.show}`}>
+        <Col>
             <div>
                 <p className={`${classes.weather__text}`} >{timeString}</p>
             </div>

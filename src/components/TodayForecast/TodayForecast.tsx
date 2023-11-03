@@ -10,8 +10,8 @@ import back from '../../assets/back.png';
 
 const TodayForecast = (props: SpecificTimeCollection) => {
     const [width, setWidth] = useState(0);
-    const containerRef = useRef(null);
-    const pageRowRef = useRef(null);
+    const containerRef = useRef(HTMLDivElement);
+    const pageRowRef = useRef(HTMLDivElement);
     
     const border = {
         transform: `translateX(${width}px)`
@@ -19,15 +19,19 @@ const TodayForecast = (props: SpecificTimeCollection) => {
 
     const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) =>{
         if(event.target.dataset.id === "back"){
-            setWidth(width + containerRef?.current?.clientWidth);
+            if(Math.abs(width) <= containerRef?.current?.clientWidth){
+                setWidth(0);
+            }else{
+                setWidth(width + containerRef?.current?.clientWidth/1.5);
+            } 
         }else{
-            setWidth(width - containerRef?.current?.clientWidth);
+            setWidth(width - containerRef?.current?.clientWidth/1.5);
+            if(Math.abs(width) +containerRef?.current?.clientWidth > pageRowRef?.current?.clientWidth - containerRef?.current?.clientWidth){
+                const maxWidth = (pageRowRef?.current?.clientWidth - containerRef?.current?.clientWidth) * -1;
+                setWidth(maxWidth);
+            }
         }
     }
-
-    useEffect(()=>{
-        setWidth(-containerRef?.current?.clientWidth)
-    },[])
 
     return (
         <Card className={`${classes.card__items}`}>
@@ -36,7 +40,7 @@ const TodayForecast = (props: SpecificTimeCollection) => {
                     Today's Forecast
                 </p>
             </div>
-            <Container className={classes.today_wrapper} ref={containerRef} >
+            <Container className={classes.today_wrapper} ref={containerRef}>
                 <button className={`${classes.button} ${classes.back__button} ${width >= 0 ? classes.hide : classes.show}`} data-id="back" onClick={handleButtonClick}>
                     <img src={back} width="20px" data-id="back"/>
                 </button>
@@ -49,7 +53,7 @@ const TodayForecast = (props: SpecificTimeCollection) => {
                     <div className={classes.page__row} style={border} ref={pageRowRef}>
                         {props.datas.map((item, index) => {
                             return (
-                                <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c} hide={false} />
+                                <SpecificTime key={index} time={item.time} code={item.code} temp_c={item.temp_c} />
                             )
                         })}  
                     </div>
