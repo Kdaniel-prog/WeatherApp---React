@@ -10,7 +10,7 @@ import RootLayout from "./pages/RootLayout/RootLayout";
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [apiUrl, setApiUrl] = useState(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=Budapest&days=7&aqi=no&alerts=no`);
+  const [apiUrl, setApiUrl] = useState(`https://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=Budapest&days=7&aqi=no&alerts=no`);
 
   const fetchData = useCallback(async () => {
     try {
@@ -36,7 +36,7 @@ function App() {
   }, [apiUrl, fetchData]);
  
   const handleResult = (city: CitiesProps) => {
-    setApiUrl(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=${city.lat},${city.lon}&days=7&aqi=no&alerts=no`);
+    setApiUrl(`https://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=${city.lat},${city.lon}&days=7&aqi=no&alerts=no`);
   };
 
   const router = createBrowserRouter([

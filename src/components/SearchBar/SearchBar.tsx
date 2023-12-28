@@ -39,7 +39,7 @@ const SearchBar = (props: SearchBarProps) => {
     const value = event.target.value;
     setSearchValue(value);
     if (value && value.length > 2) {
-        debouncedSearch(`http://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${value}`);
+        debouncedSearch(`https://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${value}`);
     }
   };
 
