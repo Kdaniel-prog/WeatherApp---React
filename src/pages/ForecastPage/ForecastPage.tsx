@@ -1,7 +1,5 @@
-import react from "react";
-
 import ForeCastPageProps from "./ForecastPageProps";
-import {SpecificMoonProps } from "../../components/MoonPhases/MoonPhasesProps";
+import { SpecificMoonProps } from "../../components/MoonPhases/MoonPhasesProps";
 import MoonPhases from "../../components/MoonPhases/MoonPhases";
 import classes from "./ForecastPage.module.css";
 import ForecastCardProps from "../../components/ForecastCard/ForecastCardProps";

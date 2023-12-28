@@ -1,5 +1,3 @@
-import react from "react";
-
 import ForecastForDaysProps from "./ForecastForDaysProps";
 import classes from "./ForecastForDays.module.css";
 import ForecastCard from "../ForecastCard/ForecastCard";

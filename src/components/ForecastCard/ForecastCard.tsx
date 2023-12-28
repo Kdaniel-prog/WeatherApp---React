@@ -1,5 +1,3 @@
-import react from "react";
-
 import classes from "./ForecastCard.module.css";
 import ForecastCardProps from "./ForecastCardProps";
 import Card from "../UI/Card/Card";
@@ -10,10 +8,8 @@ import snowflake from "../../assets/snowflake.png";
 import rain from "../../assets/rain.png";
 
 const ForecastCard = (props: ForecastCardProps) =>{
-// Define options for formatting the date
-    const options = { weekday: 'short', month: 'short', year: 'numeric' };
-    // Format the date using the options
-    const [month, year, day] = props.date.toLocaleDateString('en-US', options).split(' ');
+    // Format the date
+    const [month, year, day] = props.date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', year: 'numeric' }).split(' ');
 
     return (
         <div className={classes.space}>

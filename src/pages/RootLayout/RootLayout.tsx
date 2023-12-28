@@ -1,4 +1,3 @@
-import react from 'react';
 import { Container, Col, Row } from "react-bootstrap";
 import {Outlet} from "react-router-dom";
 

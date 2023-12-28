@@ -1,5 +1,3 @@
-import react from "react";
-
 import Card from '../UI/Card/Card';
 import {MoonCollection} from "./MoonPhasesProps";
 import classes from "./MoonPhases.module.css";
