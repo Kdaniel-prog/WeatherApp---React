@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 import WeatherData from "./api/apiWeatherProps//WeatherData";
 import TOKEN from "./api/apiWeatherProps/Token";
@@ -32,7 +32,7 @@ function App() {
   },[apiUrl])
 
   useEffect(() =>{
-      fetchData(`http://api.weatherapi.com/v1/forecast.json?key=${TOKEN}&q=Budapest&days=7&aqi=no&alerts=no`);
+      fetchData();
   }, [apiUrl, fetchData]);
  
   const handleResult = (city: CitiesProps) => {
