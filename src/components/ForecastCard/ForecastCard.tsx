@@ -6,6 +6,7 @@ import wind from "../../assets/wind1.png";
 import uv from "../../assets/uv.png";
 import snowflake from "../../assets/snowflake.png";
 import rain from "../../assets/rain.png";
+import { Container, Row } from "react-bootstrap";
 
 const ForecastCard = (props: ForecastCardProps) =>{
     // Format the date
@@ -20,31 +21,39 @@ const ForecastCard = (props: ForecastCardProps) =>{
                         <p className={classes.forecast__date}>{month}</p>
                         <p className={classes.forecast__date}>{year}</p>
                     </div>
-                    <div className={classes.forecast__img_spacing}>
-                        <WeatherImage code={props.code} width={65} />
+                    <Container>
+                        <Row className={classes.row__items}>
+                            <div className={classes.forecast__img_spacing}>
+                                <WeatherImage code={props.code} width={65} />
+                            </div>
+                            <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
+                                <img src={uv} width={30} className={classes.forecast__center_icon}/>
+                                {props.uv}
+                            </div>
+                            <div className={`${classes.forecast__spacing} ${classes.forecast__icon} ${classes.forecast_wind_text}` }>
+                            <img src={wind} width={30} className={classes.forecast__center_icon}/>
+                            {props.maxWindKph} km/h
+                        </div>
+                        {props.isSnow ?  
+                        <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
+                        <img src={snowflake} width={30} className={classes.forecast__center_icon}/>
+                            {props.snowChance}%
+                        </div>
+                        : <></>
+                        }
+                        {props.isRain ?  
+                        <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
+                        <img src={rain} width={25} className={classes.forecast__center_icon}/>
+                            {props.rainChance}%
+                        </div>
+                        : <></>
+                        }
+                        </Row>
+                    </Container>
+                    <div>
+                       
                     </div>
-                    <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
-                        <img src={uv} width={30} className={classes.forecast__center_icon}/>
-                        {props.uv}
-                    </div>
-                    <div className={`${classes.forecast__spacing} ${classes.forecast__icon} ${classes.forecast_wind_text}` }>
-                        <img src={wind} width={30} className={classes.forecast__center_icon}/>
-                        {props.maxWindKph} km/h
-                    </div>
-                    {props.isSnow ?  
-                    <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
-                    <img src={snowflake} width={30} className={classes.forecast__center_icon}/>
-                        {props.snowChance}%
-                    </div>
-                    : <div className={classes.forecast__spacing}></div>
-                    }
-                    {props.isRain ?  
-                    <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
-                    <img src={rain} width={25} className={classes.forecast__center_icon}/>
-                        {props.rainChance}%
-                    </div>
-                    : <div className={classes.forecast__spacing}></div>
-                    }
+                    
                     <div className={`${classes.forecast__tempWrapper}`}>
                         <p className={`${classes.forecast__warmTemp} ${classes.forecast__center_text}`  }>
                             {props.maxTempC}°

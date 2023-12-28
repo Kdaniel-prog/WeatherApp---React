@@ -37,6 +37,12 @@ p{
 .forecast__img_spacing{
     padding-left: 20px;
     padding-top: 10px;
+    display: flex;
+    display: flex;
+    justify-content: left;
+    width: fit-content;
+    height: fit-content;
+
 }
 
 .forecast__spacing{
@@ -70,4 +76,7 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.row__items{
+    justify-content: space-around;
 }
