@@ -79,3 +79,9 @@ p{
 .row__items{
     justify-content: flex-end;
 }
+
+@media (min-width: 490px){
+    .row__items{
+        justify-content: space-around;
+    }
+}
