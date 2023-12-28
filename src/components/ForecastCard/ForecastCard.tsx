@@ -45,12 +45,15 @@ const ForecastCard = (props: ForecastCardProps) =>{
                     </div>
                     : <div className={classes.forecast__spacing}></div>
                     }
-                    <div className={`${classes.forecast__warmTemp} ${classes.forecast__center_text}`  }>
-                        {props.maxTempC}°
+                    <div className={`${classes.forecast__tempWrapper}`}>
+                        <p className={`${classes.forecast__warmTemp} ${classes.forecast__center_text}`  }>
+                            {props.maxTempC}°
+                        </p>
+                        <p className={ `${classes.forecast__center_text} ${classes.forecast__coldTemp}`}>
+                            {props.minTempC}°
+                        </p>
                     </div>
-                    <div className={ `${classes.forecast__center_text} ${classes.forecast__coldTemp}`}>
-                        {props.minTempC}°
-                    </div>
+
                 </div>
 
             </Card>
