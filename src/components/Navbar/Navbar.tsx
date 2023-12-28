@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import Card from "../UI/Card/Card";
 import classes from './Navbar.module.css';
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () =>{
     const container = useRef<HTMLDivElement>(null);
