@@ -42,7 +42,6 @@ p{
     justify-content: left;
     width: fit-content;
     height: fit-content;
-
 }
 
 .forecast__spacing{
@@ -78,5 +77,5 @@ p{
     justify-content: space-between;
 }
 .row__items{
-    justify-content: space-around;
+    justify-content: flex-end;
 }
