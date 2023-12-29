@@ -82,6 +82,6 @@ p{
 
 @media (min-width: 490px){
     .row__items{
-        justify-content: space-around;
+        justify-content: space-between;
     }
 }
