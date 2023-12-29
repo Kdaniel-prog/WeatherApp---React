@@ -44,6 +44,10 @@ p{
     height: fit-content;
 }
 
+.forecast__words{
+    padding-top: 10px;
+}
+
 .forecast__spacing{
     padding-top: 20px;
     padding-left: 10px;
