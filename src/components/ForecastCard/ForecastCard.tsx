@@ -28,7 +28,9 @@ const ForecastCard = (props: ForecastCardProps) =>{
                             </div>
                             <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
                                 <img src={uv} width={30} className={classes.forecast__center_icon}/>
-                                {props.uv}
+                                <p className={classes.forecast__words}>
+                                    {props.uv}
+                                </p>
                             </div>
                             <div className={`${classes.forecast__spacing} ${classes.forecast__icon} ${classes.forecast_wind_text}` }>
                             <img src={wind} width={30} className={classes.forecast__center_icon}/>
