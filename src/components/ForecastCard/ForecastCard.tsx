@@ -33,29 +33,31 @@ const ForecastCard = (props: ForecastCardProps) =>{
                                 </p>
                             </div>
                             <div className={`${classes.forecast__spacing} ${classes.forecast__icon} ${classes.forecast_wind_text}` }>
-                            <img src={wind} width={30} className={classes.forecast__center_icon}/>
-                            {props.maxWindKph} km/h
-                        </div>
+                                <img src={wind} width={30} className={classes.forecast__center_icon}/>
+                                <p>
+                                    {props.maxWindKph} km/h
+                                </p>
+                            </div>
                         {props.isSnow ?  
                         <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
-                        <img src={snowflake} width={30} className={classes.forecast__center_icon}/>
-                            {props.snowChance}%
+                            <img src={snowflake} width={30} className={classes.forecast__center_icon}/>
+                            <p className={classes.forecast__words}>
+                                {props.snowChance}%
+                            </p>
                         </div>
                         : <></>
                         }
                         {props.isRain ?  
                         <div className={`${classes.forecast__spacing} ${classes.forecast__icon}` }>
-                        <img src={rain} width={25} className={classes.forecast__center_icon}/>
-                            {props.rainChance}%
+                            <img src={rain} width={25} className={classes.forecast__center_icon}/>
+                            <p className={classes.forecast__words}>
+                                {props.rainChance}%
+                            </p>
                         </div>
                         : <></>
                         }
                         </Row>
-                    </Container>
-                    <div>
-                       
-                    </div>
-                    
+                    </Container>                    
                     <div className={`${classes.forecast__tempWrapper}`}>
                         <p className={`${classes.forecast__warmTemp} ${classes.forecast__center_text}`  }>
                             {props.maxTempC}°
