@@ -12,6 +12,7 @@
     text-align: left;
     width: 100%;
     white-space: break-spaces;
+    border-radius: 10px;
   }
   
   .darker{
