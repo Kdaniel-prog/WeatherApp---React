@@ -7,9 +7,10 @@ import CitiesProps from "../CitiesProps";
 const SearchResult = (props: SearchResultProps) => {
   const selectedIndex = props.index - 1;
 
-  const handleClick = (e: React.MouseEvent<HTMLOptionElement>) => {
-    const target = e.target as HTMLOptionElement;
-    const [selectedCity, selectedCountry, selectedRegio] = target.text.split('|').map(item => item.trim());
+  const handleClick = (e: React.MouseEvent<HTMLUListElement>) => {
+    const target = e.target as HTMLUListElement;
+    const content = target?.textContent ? target.textContent : '';
+    const [selectedCity, selectedCountry, selectedRegio] = content.split('|').map(item => item.trim());
     const selected: CitiesProps | undefined = props.cities.find(city => {
        // Check if selectedRegio is undefined before comparing it with city.region
       if (selectedRegio === undefined) {
@@ -64,13 +65,13 @@ const SearchResult = (props: SearchResultProps) => {
       <div className={`${classes.search__result__wrapper}`}>
         {props.cities.map((item, index) => {
           return (
-            <option
+            <ul
               key={index}
-              className={`${classes.search__result}  ${selectedIndex === index ? classes.hover : ""} ${index % 2 === 0 ? classes.darker : ""}`}
+              className={`${classes.search__result} ${selectedIndex === index ? classes.hover : ""} ${index % 2 === 0 ? classes.darker : ""}`}
               onClick={handleClick}
             >
               {`${item.name} | ${item.country} | ${item.region}`}
-            </option>
+            </ul>
           );
         })}
       </div>
