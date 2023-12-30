@@ -6,4 +6,7 @@ div#root {
     height: 100%; /* remove this line to see div.app is no more 100% height */
     background-color: rgb(11, 19, 30);
   }
-  
+
+body{
+  background-color: rgb(11, 19, 30);
+}
