@@ -11,8 +11,12 @@
     width: 100%;
     text-align: left;
     width: 100%;
+    white-space: break-spaces;
   }
   
+  .darker{
+    background-color: #e5e1eb;
+  }
   .hover{
     background-color: rgb(222, 218, 218);
   }

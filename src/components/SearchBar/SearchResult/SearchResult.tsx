@@ -66,7 +66,7 @@ const SearchResult = (props: SearchResultProps) => {
           return (
             <option
               key={index}
-              className={`${classes.search__result}  ${selectedIndex === index ? classes.hover : ""}`}
+              className={`${classes.search__result}  ${selectedIndex === index ? classes.hover : ""} ${index % 2 === 0 ? classes.darker : ""}`}
               onClick={handleClick}
             >
               {`${item.name} | ${item.country} | ${item.region}`}
