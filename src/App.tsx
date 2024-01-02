@@ -19,7 +19,8 @@ function App() {
         headers:{
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-      }})
+        } 
+      })
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
