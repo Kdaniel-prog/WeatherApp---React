@@ -30,8 +30,7 @@ const SearchBar = (props: SearchBarProps) => {
       setIsLoading(false);
       return data;
     } catch (error) {
-      console.log(error);
-      console.log("error");
+      console.error("error");
     }
   }, []);
 
@@ -67,7 +66,6 @@ const SearchBar = (props: SearchBarProps) => {
       event.preventDefault();
       setEnterPressed(true);
       if(index === 0){
-        console.log(value)
         const criteria = `https://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${value}`;
         setCities(await fetchData(criteria));
       }

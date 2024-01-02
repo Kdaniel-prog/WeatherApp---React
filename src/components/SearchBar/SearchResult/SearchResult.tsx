@@ -54,7 +54,6 @@ const SearchResult = (props: SearchResultProps) => {
   
   if (props.enterPressed && props.cities.length > 0 && selectedIndex >= 0) {
     const selected: CitiesProps = props?.cities[selectedIndex];
-    console.log(selected)
     if(selected){
         props.onEnterPressed(selected);
     }
