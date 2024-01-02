@@ -53,7 +53,7 @@ const SearchBar = (props: SearchBarProps) => {
     return () => {
       debouncedSearch.cancel();
     };
-  }, [debouncedSearch]);
+  }, [debouncedSearch, cities]);
 
   const handleKey = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     setShowResult(true);
