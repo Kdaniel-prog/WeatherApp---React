@@ -15,8 +15,7 @@ button{
 
 .wrapper{
     overflow: hidden;
-    margin-right:10px;
-    margin-left:5px;
+    padding:5px;
 }
 
 .today_wrapper{
