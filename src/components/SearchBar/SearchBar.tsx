@@ -58,14 +58,13 @@ const SearchBar = (props: SearchBarProps) => {
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     setShowResult(true);
     const keys = ["ArrowUp", "ArrowDown", "Enter"];
-    const value = (event.target as HTMLInputElement).value;
     if (!keys.includes(event.code)) {
       return;
     }
 
     if (event.code === "Enter") {
       event.preventDefault();
-      debouncedSearch(`https://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${value}`);
+      setEnterPressed(true);
       return;
     }
 
