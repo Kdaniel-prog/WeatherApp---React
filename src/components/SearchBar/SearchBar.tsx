@@ -38,7 +38,7 @@ const SearchBar = (props: SearchBarProps) => {
   const searchCities = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchValue(value);
-    if (value && value.length > 2) {
+    if ((value && value.length > 2) || (value && enterPressed) ) {
         debouncedSearch(`https://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${value}`);
     }
   };
