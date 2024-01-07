@@ -7,7 +7,7 @@ const SpecificTime = (props: SpecificTimeProps) => {
 
     // Convert the string to a Date object
     const time = new Date(props.time.toString().replace(/-/g, '-' ));
-    console.log(props.time.toString().replace(/-/g, '-' ).replace(' ', 'T'))
+    console.log(props.time.toDateString().replace(/-/g, '-' ).replace(' ', 'T'))
 
     // Check if the conversion was successful
     if (isNaN(time.getTime())) {
