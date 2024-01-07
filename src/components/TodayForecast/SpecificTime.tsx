@@ -4,8 +4,15 @@ import Col from 'react-bootstrap/Col';
 import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-    const timeString = props.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-    return (
+  const timeString = new Intl.DateTimeFormat('en-US', 
+    { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        hour12: false
+        
+    }).format(props.time);
+
+  return (
         <Col>
             <div>
                 <p className={`${classes.weather__text}`} >{timeString}</p>
