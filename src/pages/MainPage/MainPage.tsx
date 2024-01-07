@@ -22,7 +22,7 @@ const MainPage = (props: MainPageProps) => {
     const hourForecast = props?.weatherData?.forecast?.forecastday?.[0]?.hour
         ? props?.weatherData?.forecast?.forecastday?.[0]?.hour
         : nullHourlyForeCast;
-
+    console.log(JSON.parse(JSON.stringify(hourForecast)))
     const todayDates: SpecificTimeProps[] = hourForecast.map(hourForecast =>{
         const specHour: SpecificTimeProps = {
             time: hourForecast.time ? hourForecast.time : '24:00',
