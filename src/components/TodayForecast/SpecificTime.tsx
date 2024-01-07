@@ -5,7 +5,8 @@ import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
     // Convert the string to a Date object
-    const time = new Date(props.time.replace(' ', 'T'));
+    console.log(props.time)
+    const time = new Date(props.time);
     console.log(time)
 
     // Check if the conversion was successful
