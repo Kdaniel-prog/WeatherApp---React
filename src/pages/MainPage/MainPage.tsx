@@ -25,7 +25,7 @@ const MainPage = (props: MainPageProps) => {
 
     const todayDates: SpecificTimeProps[] = hourForecast.map(hourForecast =>{
         const specHour: SpecificTimeProps = {
-            time: hourForecast.time ? hourForecast.time : '00:00',
+            time: hourForecast.time ? hourForecast.time : '24:00',
             temp_c: hourForecast.temp_c ? hourForecast.temp_c: 0,
             code: hourForecast.condition.code,
         }
