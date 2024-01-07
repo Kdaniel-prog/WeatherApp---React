@@ -25,6 +25,7 @@ function App() {
         throw new Error('Something went wrong!');
       }
       const data = await response.json();
+      console.log(JSON.parse(JSON.stringify(data)));
       setWeatherData(data);
     } catch (error) {
       console.error(error)
