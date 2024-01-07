@@ -6,7 +6,7 @@ import classes from './SpecificTime.module.css';
 const SpecificTime = (props: SpecificTimeProps) => {
 
     // Convert the string to a Date object
-    const time = new Date(props.time.toString().replace(/\s/, 'T'));
+    const time = new Date(props.time.toString().replace(/\s/, 'T')+'Z');
 
     // Check if the conversion was successful
     if (isNaN(time.getTime())) {
