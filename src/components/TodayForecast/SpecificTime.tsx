@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-    console.log(props.time.toDateString())
+    console.log(props.time.toLocaleTimeString())
     // Convert the string to a Date object
     const time = new Date(props.time.toDateString().replace(/-/g, '-' ));
     
