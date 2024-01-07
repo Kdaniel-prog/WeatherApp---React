@@ -4,15 +4,21 @@ import Col from 'react-bootstrap/Col';
 import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-  const timeString = new Intl.DateTimeFormat('en-US', 
-    { 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        hour12: false
-        
-    }).format(props.time);
 
-  return (
+    // Convert the string to a Date object
+    const time = new Date(props.time);
+
+    // Check if the conversion was successful
+    if (isNaN(time.getTime())) {
+        // Handle invalid date format
+        console.error('Invalid date format:', props.time);
+        return null; // or provide a default rendering or error message
+    }
+
+    // Format the date as a time string
+    const timeString = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }).format(time);
+
+    return (
         <Col>
             <div>
                 <p className={`${classes.weather__text}`} >{timeString}</p>
