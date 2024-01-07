@@ -1,5 +1,5 @@
 export interface SpecificTimeProps {
-  time: string;
+  time: Date;
   code: number;
   temp_c: number;
 }
