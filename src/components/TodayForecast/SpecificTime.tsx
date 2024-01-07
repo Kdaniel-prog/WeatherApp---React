@@ -4,10 +4,10 @@ import Col from 'react-bootstrap/Col';
 import classes from './SpecificTime.module.css';
 
 const SpecificTime = (props: SpecificTimeProps) => {
-
+    console.log(props.time)
     // Convert the string to a Date object
     const time = new Date(props.time.replace(/-/g, '-' ));
-    console.log(props.time)
+    
 
     // Check if the conversion was successful
     if (isNaN(time.getTime())) {
