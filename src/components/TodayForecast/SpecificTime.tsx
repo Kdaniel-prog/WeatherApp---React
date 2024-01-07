@@ -12,7 +12,16 @@ const SpecificTime = (props: SpecificTimeProps) => {
     if (isNaN(time.getTime())) {
         // Handle invalid date format
         console.error('Invalid date format:', props.time);
-        return null; // or provide a default rendering or error message
+        return (
+            <Col>
+                <div className={`${classes.image__container}`}>
+                    <div className={`${classes.centered__content}`}>
+                        <WeatherImage width={70} code={props.code}/>
+                    </div>
+                </div>
+                <p className={`${classes.weather__text}`}>{props.temp_c}°</p>
+            </Col>
+        )
     }
 
     // Format the date as a time string
