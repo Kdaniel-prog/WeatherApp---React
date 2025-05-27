@@ -3,7 +3,7 @@ import Card from "../UI/Card/Card";
 import CitiesProps from "./CitiesProps";
 import SearchResult from "./SearchResult/SearchResult";
 import SearchBarProps from "./SearchBarProps";
-import TOKEN from "../../api/apiWeatherProps/Token";
+import TOKEN from "../../api/config";
 import classes from "./SearchBar.module.css";
 import { debounce } from "lodash"
 
